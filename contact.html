@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us – Pinaki Era</title>
+    <meta name="description" content="Get in touch with Pinaki Era. We'd love to hear from you.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #ffcfcf 0%, #ffebeb 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Card */
+        .card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 3rem 3.5rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06), 0 0 0 10px rgba(255, 255, 255, 0.4);
+            z-index: 1;
+            width: 100%;
+            max-width: 620px;
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header */
+        .card-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 2.2rem;
+            text-align: center;
+        }
+
+        .logo-container {
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.4rem;
+        }
+
+        .logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            font-size: 0.78rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #cc8888;
+            font-weight: 500;
+        }
+
+        .card-header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333333;
+            letter-spacing: -0.5px;
+        }
+
+        .card-header h1 span {
+            background: linear-gradient(90deg, #ff9a9a, #ffcfcf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-header p {
+            font-size: 1rem;
+            color: #888888;
+            font-weight: 300;
+        }
+
+        /* Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: #888888;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1.1rem;
+            border: 1.5px solid #f0dede;
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.98rem;
+            color: #333333;
+            background: #fdfafa;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            resize: none;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #ccbbbb;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #ff9a9a;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(255, 154, 154, 0.12);
+        }
+
+        .form-group textarea {
+            height: 130px;
+        }
+
+        /* Submit button */
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #ff9a9a, #ffcfcf);
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(255, 154, 154, 0.45);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 0.4rem;
+            letter-spacing: 0.04em;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(255, 154, 154, 0.55);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Back link */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #bbaaaa;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover { color: #ff9a9a; }
+
+        /* ── Thank-You Overlay ───────────────────────── */
+        .thankyou-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 235, 235, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .thankyou-overlay.active {
+            display: flex;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        .thankyou-card {
+            background: #fff;
+            border-radius: 28px;
+            padding: 3.5rem 3rem;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(255, 154, 154, 0.2), 0 0 0 10px rgba(255,255,255,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            animation: popUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes popUp {
+            from { transform: scale(0.85); opacity: 0; }
+            to   { transform: scale(1);    opacity: 1; }
+        }
+
+        .thankyou-logo-container {
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.4rem;
+        }
+
+        .thankyou-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .thankyou-check {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #a8edba, #6dd594);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 6px 18px rgba(109, 213, 148, 0.35);
+        }
+
+        .thankyou-card h2 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #333333;
+        }
+
+        .thankyou-card h2 span {
+            background: linear-gradient(90deg, #ff9a9a, #ffcfcf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .thankyou-card p {
+            font-size: 1rem;
+            color: #888888;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .thankyou-back-btn {
+            margin-top: 0.5rem;
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, #ff9a9a, #ffcfcf);
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(255, 154, 154, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .thankyou-back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 154, 154, 0.5);
+        }
+
+        /* ── Responsive: Tablet ─────────────────────── */
+        @media (max-width: 1024px) {
+            .card {
+                padding: 2.5rem 2.5rem;
+                max-width: 580px;
+            }
+            .thankyou-card {
+                padding: 3rem 2.5rem;
+            }
+        }
+
+        /* ── Responsive: Phone ─────────────────────── */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.5rem 0.75rem;
+            }
+            .card {
+                padding: 2rem 1.4rem;
+                border-radius: 20px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .card-header h1 {
+                font-size: 1.6rem;
+            }
+            .card-header p {
+                font-size: 0.9rem;
+            }
+            .logo-container {
+                width: 75px;
+                height: 75px;
+            }
+            .thankyou-card {
+                padding: 2.5rem 1.5rem;
+                border-radius: 20px;
+            }
+            .thankyou-card h2 {
+                font-size: 1.35rem;
+            }
+            .thankyou-logo-container {
+                width: 75px;
+                height: 75px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            body {
+                padding: 1rem 0.4rem;
+            }
+            .card {
+                padding: 1.5rem 1rem;
+                border-radius: 16px;
+            }
+            .card-header {
+                margin-bottom: 1.5rem;
+            }
+            .card-header h1 {
+                font-size: 1.4rem;
+            }
+            .logo-container {
+                width: 65px;
+                height: 65px;
+            }
+            .form-group input,
+            .form-group textarea {
+                padding: 0.7rem 0.9rem;
+                font-size: 0.92rem;
+            }
+            .submit-btn {
+                padding: 0.85rem;
+                font-size: 0.92rem;
+            }
+            .thankyou-card {
+                padding: 2rem 1.2rem;
+            }
+            .thankyou-card h2 {
+                font-size: 1.2rem;
+            }
+            .thankyou-logo-container {
+                width: 65px;
+                height: 65px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Contact Form Card -->
+    <div class="card">
+        <div class="card-header">
+            <div class="logo-container">
+                <img src="mainlogo.png" alt="Pinaki Era Logo" class="logo">
+            </div>
+            <span class="brand-name">Pinaki Era</span>
+            <h1>Contact <span>Us</span></h1>
+            <p>We'd love to hear from you. Fill in the form below!</p>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact</label>
+                    <input type="tel" id="contact" name="contact" placeholder="Phone / WhatsApp" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell us more…" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn">Send Message ✉</button>
+        </form>
+
+        <a href="index.htm" class="back-link">← Back to Home</a>
+    </div>
+
+    <!-- Thank You Overlay -->
+    <div class="thankyou-overlay" id="thankYouOverlay">
+        <div class="thankyou-card">
+            <div class="thankyou-logo-container">
+                <img src="mainlogo.png" alt="Pinaki Era Logo" class="thankyou-logo">
+            </div>
+            <div class="thankyou-check">✓</div>
+            <h2>Thank You For Contacting <span>Pinaki Era</span></h2>
+            <p>Our team will reach you soon.<br>We appreciate you reaching out to us!</p>
+            <a href="index.htm" class="thankyou-back-btn">← Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        const FORMSPREE_URL = 'https://formspree.io/f/mbdznvnb';
+
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // ── Validation ────────────────────────────────────
+            const fieldIds = ['name', 'contact', 'email', 'subject', 'message'];
+            let valid = true;
+
+            fieldIds.forEach(function (id) {
+                const el = document.getElementById(id);
+                if (!el.value.trim()) {
+                    el.style.borderColor = '#ff9a9a';
+                    el.style.boxShadow = '0 0 0 4px rgba(255,154,154,0.2)';
+                    valid = false;
+                } else {
+                    el.style.borderColor = '#f0dede';
+                    el.style.boxShadow = 'none';
+                }
+            });
+
+            if (!valid) return;
+
+            // ── Loading state ─────────────────────────────────
+            const btn = document.getElementById('submit-btn');
+            const originalText = btn.textContent;
+            btn.textContent = 'Sending…';
+            btn.disabled = true;
+            btn.style.opacity = '0.75';
+            btn.style.cursor = 'not-allowed';
+
+            // ── Collect form data ─────────────────────────────
+            const formData = {
+                name:    document.getElementById('name').value.trim(),
+                contact: document.getElementById('contact').value.trim(),
+                email:   document.getElementById('email').value.trim(),
+                subject: document.getElementById('subject').value.trim(),
+                message: document.getElementById('message').value.trim()
+            };
+
+            // ── Submit to Formspree ───────────────────────────
+            try {
+                const response = await fetch(FORMSPREE_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    // Success → show thank-you overlay
+                    document.getElementById('thankYouOverlay').classList.add('active');
+                    document.getElementById('contactForm').reset();
+                } else {
+                    const data = await response.json();
+                    const errMsg = (data && data.errors)
+                        ? data.errors.map(function (err) { return err.message; }).join(', ')
+                        : 'Something went wrong. Please try again.';
+                    alert('⚠️ ' + errMsg);
+
+                    // Restore button
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                    btn.style.cursor = 'pointer';
+                }
+            } catch (err) {
+                alert('⚠️ Network error. Please check your connection and try again.');
+
+                // Restore button
+                btn.textContent = originalText;
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                btn.style.cursor = 'pointer';
+            }
+        });
+    </script>
+</body>
+
+</html>

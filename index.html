@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launching Soon - Pinaki Era</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #ffcfcf 0%, #ffebeb 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 2rem 1rem;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 24px;
+            padding: 3.5rem 4rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05), 0 0 0 10px rgba(255, 255, 255, 0.4);
+            text-align: center;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.8rem;
+            max-width: 90%;
+            width: 600px;
+            animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-container {
+            width: 160px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem;
+        }
+
+        .logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #333333;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, #ff9a9a, #ffcfcf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.25rem;
+            color: #666666;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ffcfcf, #ff9a9a);
+            border-radius: 10px;
+            animation: loadProgress 2s ease-out forwards;
+        }
+
+        @keyframes loadProgress {
+            to {
+                width: 75%;
+            }
+        }
+
+        /* ── Contact Us section ─────────────────────── */
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            padding-top: 0.5rem;
+            border-top: 1px solid #ffeaea;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #bbaaaa;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.95rem 2.8rem;
+            background: linear-gradient(135deg, #ff9a9a, #ffcfcf);
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(255, 154, 154, 0.45);
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, letter-spacing 0.25s ease;
+            letter-spacing: 0.04em;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(255, 154, 154, 0.55);
+            letter-spacing: 0.08em;
+        }
+
+        .contact-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ── Responsive: Tablet ─────────────────────── */
+        @media (max-width: 1024px) {
+            .card {
+                padding: 3rem 3rem;
+                width: 560px;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .logo-container {
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        /* ── Responsive: Mobile ─────────────────────── */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 0.75rem;
+            }
+
+            .card {
+                padding: 2.5rem 1.8rem;
+                border-radius: 20px;
+                gap: 1.4rem;
+            }
+
+            h1 {
+                font-size: 2.4rem;
+            }
+
+            p {
+                font-size: 1.05rem;
+            }
+
+            .logo-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .contact-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+
+            .card {
+                padding: 2rem 1.2rem;
+                max-width: 95%;
+                border-radius: 18px;
+                gap: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+                letter-spacing: -0.5px;
+            }
+
+            p {
+                font-size: 0.95rem;
+            }
+
+            .logo-container {
+                width: 100px;
+                height: 100px;
+            }
+
+            .contact-label {
+                font-size: 0.75rem;
+            }
+
+            .contact-btn {
+                padding: 0.75rem 1.8rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="logo-container">
+            <img src="mainlogo.png" alt="Pinaki Era Logo" class="logo">
+        </div>
+
+        <div>
+            <h1>Launching <span>Soon</span></h1>
+            <p>We are meticulously crafting something beautifully unique. Our new experience will be ready shortly.</p>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+        <!-- Contact Us Section -->
+        <div class="contact-section">
+            <span class="contact-label">Contact Us</span>
+            <a href="contact.html" class="contact-btn" id="contact-us-btn">
+                ✉&nbsp; Get In Touch
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
